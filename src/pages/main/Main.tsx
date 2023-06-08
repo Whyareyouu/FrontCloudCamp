@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Label} from "../../components";
+import {Button, Input, Label} from "../../components";
 import {Link, List, Name, Wrapper} from "./Main.styles";
 
 const MainPage = () => {
@@ -26,6 +26,7 @@ const MainPage = () => {
                 Email
                 <Input placeholder='example@example.com' value='bionixxxd5@gmail.com' disabled={true} id='email'/>
             </Label>
+            <Button appearance='primary'>Начать</Button>
         </Wrapper>
     );
 };
