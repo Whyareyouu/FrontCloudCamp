@@ -11,6 +11,7 @@ export const StyledButton = styled.button<ButtonProps>`
   border: 1.5px solid transparent;
   border-radius: 4px;
   outline: none;
+  cursor: pointer;
   
   ${props => {
     switch (props.appearance) {

@@ -2,15 +2,45 @@ import styled from 'styled-components'
 import FolderIcon from '../../assets/Folder.svg'
 
 export const Wrapper = styled.div`
-  max-width: 400px;
+  max-width: 852px;
   
   display: flex;
   flex-direction: column;
   gap: 24px;
   
   padding: 24px;
+  
+  input{
+    max-width: 400px;
+  }
 `
 
+export const About = styled.div`
+  display: flex;
+  gap: 24px;
+  align-items: center;
+`
+export const Avatar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 52px;
+  
+  background: #D5E4F7;
+  border-radius: 50%;
+
+  position: relative;
+
+  &::before {
+    display: block;
+    content: 'НЧ';
+  }
+`
 export const Name = styled.h1`
   font-weight: 600;
   font-size: 20px;
@@ -25,7 +55,7 @@ export const List = styled.ul`
 
   li {
     display: flex;
-    gap: 12px;
+    gap: 4px;
 
     &::before {
       content: '';
@@ -36,7 +66,7 @@ export const List = styled.ul`
     }
   }
 `
-export const Link = styled.a`
+export const SimpleLink = styled.a`
   font-size: 12px;
   line-height: 16px;
 
@@ -46,4 +76,9 @@ export const Link = styled.a`
   &:hover {
     color: #484BD5;
   }
+`
+
+export const Devider = styled.hr`
+  height: 1px;
+  border: 1px solid #00000014;
 `
