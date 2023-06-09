@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     --gray: #00000029; // 0.16
     --gray-light: #0000000a; // 0.04
     --gray-dark: #0000007a; // 0.48
-    --purple: #5558FA;
+    --purple: #5558FA; 
     --purple-hover: #AAABFD;
     --error: #E84E58;
     --white: #fff;

@@ -2,9 +2,9 @@ import React from 'react';
 import {ButtonProps} from "./Button.interface";
 import {StyledButton} from "./Button.styles";
 
-const Button = ({className, children, appearance, onClick, ...props}: ButtonProps) => {
+const Button = ({className, id, children, appearance, onClick, disabled, ...props}: ButtonProps) => {
     return (
-        <StyledButton className={className} appearance={appearance} onClick={onClick}>
+        <StyledButton className={className} id={id} appearance={appearance} onClick={onClick} disabled={disabled}>
             {children}
         </StyledButton>
     );

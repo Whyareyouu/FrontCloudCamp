@@ -19,6 +19,15 @@ export const StyledButton = styled.button<ButtonProps>`
         return css`
           color: var(--white);
           background: var(--purple);
+
+          &:hover {
+            background: #484BD5;
+          }
+
+          &:disabled {
+            background: var(--purple-hover);
+            color: #D5D5FE;
+          }
         `
       case 'border':
         return css`
@@ -27,6 +36,10 @@ export const StyledButton = styled.button<ButtonProps>`
 
           &:hover {
             border-color: #484BD5;
+          }
+          &:disabled{
+            border-color: var(--purple-hover);
+            color: var(--purple-hover);
           }
         `
     }

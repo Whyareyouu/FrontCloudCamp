@@ -10,11 +10,12 @@ const Input = forwardRef(({
                               placeholder,
                               value,
                               disabled,
+                              onChange,
                               ...props
                           }: InputProps, ref: ForwardedRef<HTMLInputElement>): React.JSX.Element => {
         return (
             <StyledInput className={className} id={id} name={name} placeholder={placeholder} value={value}
-                         disabled={disabled} ref={ref}/>
+                         disabled={disabled} ref={ref} onChange={onChange} />
         );
     }
 )
