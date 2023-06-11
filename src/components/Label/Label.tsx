@@ -2,9 +2,9 @@ import React from 'react';
 import {CustomLabel} from "./Label.styles";
 import {LabelProps} from "./Label.interface";
 
-const Label = ({className, children, htmlFor}: LabelProps) => {
+const Label = ({className, children, direction = 'column', gap = 8, htmlFor, ...props}: LabelProps) => {
     return (
-        <CustomLabel className={className} htmlFor={htmlFor}>
+        <CustomLabel className={className} htmlFor={htmlFor} direction={direction} gap={gap}>
             {children}
         </CustomLabel>
     );

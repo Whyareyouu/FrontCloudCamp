@@ -29,7 +29,7 @@ const MainPage = () => {
                 Email
                 <Input placeholder='example@example.com' value='bionixxxd5@gmail.com' disabled={true} id='email'/>
             </Label>
-            <Button appearance='primary' onClick={() => navigate('/create')}>Начать</Button>
+            <Button appearance='primary' onClick={() => navigate('/create')} id='button-start'>Начать</Button>
         </Wrapper>
     );
 };
