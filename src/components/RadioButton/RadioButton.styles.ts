@@ -2,15 +2,11 @@ import styled from 'styled-components';
 
 export const CustomRadioButton = styled.label`
   display: inline-flex;
-  padding-left: 20px;
+  padding-left: 24.5px;
   
   position: relative;
   cursor: pointer;
-
-  input[type='radio'] {
-    display: none;
-  }
-
+  
   .checkmark {
     position: absolute;
     top: 0;
@@ -51,6 +47,7 @@ export const CustomRadioButton = styled.label`
 `;
 
 export const CustomRadioInput = styled.input.attrs({ type: 'radio' })`
+    display: none;
 `;
 
 export const CustomRadioText = styled.span`
