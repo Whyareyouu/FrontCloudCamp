@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {MultiFormState} from "../../../interfaces/MultiForm.interface";
-import {IFormStepFirst} from "../../../interfaces/Form.interface";
+import {IFormStepFirst, IFormStepSecond} from "../../../interfaces/Form.interface";
 
 
 const formInitialState: MultiFormState = {
@@ -11,7 +11,7 @@ const formInitialState: MultiFormState = {
     email: '',
     sex: '',
     advantages: [],
-    radio: 0,
+    radio: '',
     checkbox: [],
     about: ''
 }
@@ -22,9 +22,12 @@ const formSlice = createSlice({
     reducers: {
         updateFormStepFirst: (state, action: PayloadAction<IFormStepFirst>) => {
             return {...state, ...action.payload}
+        },
+        updateFormStepSecond:(state, action: PayloadAction<IFormStepSecond>) => {
+            return {...state, ...action.payload}
         }
     }
 })
 
-export const {updateFormStepFirst}= formSlice.actions
+export const {updateFormStepFirst, updateFormStepSecond}= formSlice.actions
 export const FormSliceReducer = formSlice.reducer

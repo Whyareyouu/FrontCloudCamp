@@ -6,7 +6,7 @@ export interface MultiFormState {
     email: string,
     sex: 'man' | 'woman' | '',
     advantages: string[],
-    radio: number,
-    checkbox: number[],
+    radio: string,
+    checkbox: string[],
     about: string;
 }

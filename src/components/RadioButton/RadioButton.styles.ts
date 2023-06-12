@@ -37,8 +37,9 @@ export const CustomRadioButton = styled.label`
   }
 
   .checkmark::after {
-    top: 2.5px;
-    left: 2.5px;
+    //top: 2.5px;
+    //left: 2.5px;
+    transform: translate(40%, 35%);
     width: 8px;
     height: 8px;
     border-radius: 50%;
