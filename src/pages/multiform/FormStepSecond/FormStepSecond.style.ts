@@ -16,6 +16,10 @@ export const Advantage = styled.div`
   display: flex;
   gap: 16px;
   align-items: center;
+  
+  input{
+    max-width: 300px;
+  }
 `
 export const RemoveAdvantage = styled.button`
   width: 20px;
@@ -27,4 +31,11 @@ export const RemoveAdvantage = styled.button`
   background-position: center center;
   
   cursor: pointer;
+`
+
+export const ButtonContainer = styled.div`
+  margin-top: 56px;
+  
+  display: flex;
+  justify-content: space-between;
 `

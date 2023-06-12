@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import FormStepFirst from "./FormStepFirst";
+import FormStepFirst from "./FormStepFirst/FormStepFirst";
 import FormStepSecond from "./FormStepSecond/FormStepSecond";
 import MainLayout from "../../Layout/main/MainLayout";
+import FormStepThird from "./FormStepThird/FormStepThird";
 
 
 const MultiForm = () => {
-    const [step, setStep] = useState<number>(2)
+    const [step, setStep] = useState<number>(3)
 
     const handleNextPage = () => {
         if (step === 3) return
@@ -23,6 +24,8 @@ const MultiForm = () => {
 
         case 2:
             return <FormStepSecond/>
+        case 3:
+            return <FormStepThird/>
         default:
             return <FormStepFirst/>
     }

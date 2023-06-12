@@ -1,10 +1,10 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import {Button, Input, Label} from "../../components";
-import {useAppDispatch, useAppSelector} from "../../hooks/redux-hooks";
-import {updateFormStepFirst} from "../../components/redux/slices/formSlice";
-import {IFormStepFirst} from "../../interfaces/Form.interface";
-import Select from "../../components/Select/Select";
+import {Button, Input, Label} from "../../../components";
+import {useAppDispatch, useAppSelector} from "../../../hooks/redux-hooks";
+import {updateFormStepFirst} from "../../../components/redux/slices/formSlice";
+import {IFormStepFirst} from "../../../interfaces/Form.interface";
+import Select from "../../../components/Select/Select";
 
 const FormStepFirst = () => {
     const formFirstState = useAppSelector(state => state.FormSliceReducer)

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Checkbox, Input, Label} from "../../../components";
 import RadioButton from "../../../components/RadioButton/RadioButton";
-import {Advantage, Advantages, RemoveAdvantage, StyledForm} from "./FormStepSecond.style";
+import {Advantage, Advantages, ButtonContainer, RemoveAdvantage, StyledForm} from "./FormStepSecond.style";
 import {IFormStepSecond} from "../../../interfaces/Form.interface";
 import {Controller, useFieldArray, useForm} from "react-hook-form";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux-hooks";
@@ -69,8 +69,10 @@ const FormStepSecond = () => {
                     <RadioButton children='3' id='field-radio-group-option-3' value={3} {...register('radio')}/>
                 </Label>
             </div>
-            <Button appearance='border'>Назад</Button>
-            <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
+            <ButtonContainer>
+                <Button appearance='border'>Назад</Button>
+                <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
+            </ButtonContainer>
         </StyledForm>
     );
 };
