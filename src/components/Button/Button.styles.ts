@@ -9,7 +9,7 @@ export const StyledButton = styled.button<ButtonProps>`
   line-height: 20px;
   
   border: 1.5px solid transparent;
-  background: none;
+  background: transparent;
   border-radius: 4px;
   outline: none;
   cursor: pointer;

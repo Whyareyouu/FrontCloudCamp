@@ -6,7 +6,7 @@ import FormStepThird from "./FormStepThird/FormStepThird";
 
 
 const MultiForm = () => {
-    const [step, setStep] = useState<number>(3)
+    const [step, setStep] = useState<number>(1)
 
     const handleNextPage = () => {
         if (step === 3) return

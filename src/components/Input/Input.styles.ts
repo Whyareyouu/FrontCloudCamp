@@ -1,10 +1,20 @@
 import styled from 'styled-components'
 
-export const StyledInput = styled.input`
+type InputProps = {
+    error?: string;
+}
+
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`
+
+export const StyledInput = styled.input<InputProps>`
   width: 100%;
 
   padding: 12px;
-  border: 1px solid var(--gray);
+  border: 1px solid ${props=> props.error ? "var(--error)" : "var(--gray)"};
   border-radius: 4px;
 
   font-size: 14px;
@@ -23,6 +33,12 @@ export const StyledInput = styled.input`
   }
 
   &:focus {
-    border: 1px solid var(--purple);
+    border: 1px solid ${props=> props.error ? "var(--error)" : "var(--purple)"};;
   }
+`
+
+export const Tip = styled.span`
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--gray-dark)
 `
