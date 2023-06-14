@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import ClearIcon from './ClearIcon'
 
 type InputProps = {
     error?: boolean;
@@ -9,13 +10,14 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  position: relative;
 `
 
 export const StyledInput = styled.input<InputProps>`
   width: 100%;
 
   padding: 12px;
-  border: 1px solid ${props=> props.error ? "var(--error)" : "var(--gray)"};
+  border: 1px solid ${props => props.error ? "var(--error)" : "var(--gray)"};
   border-radius: 4px;
 
   font-size: 14px;
@@ -34,7 +36,7 @@ export const StyledInput = styled.input<InputProps>`
   }
 
   &:focus {
-    border: 1px solid ${props=> props.error ? "var(--error)" : "var(--purple)"};;
+    border: 1px solid ${props => props.error ? "var(--error)" : "var(--purple)"};;
   }
 `
 
@@ -42,4 +44,10 @@ export const Tip = styled.span`
   font-size: 12px;
   line-height: 16px;
   color: var(--gray-dark)
+`
+
+export const StyledClearIcon = styled(ClearIcon)`
+  position: absolute;
+  top: 12px;
+  right: 12px;
 `

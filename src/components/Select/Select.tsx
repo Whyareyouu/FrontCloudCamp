@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Option, OptionsContainer, SelectButton, SelectContainer} from "./Select.style";
+import {Option, OptionsContainer, SelectButton, SelectContainer, Tip} from "./Select.style";
 import {SelectProps, TOption} from "./Select.interface";
+import {ErrorMessage} from "../index";
 
-const Select: React.FC<SelectProps> = ({options, onChange, placeholder}): React.JSX.Element => {
+const Select: React.FC<SelectProps> = ({options, onChange, placeholder, error, tip}): React.JSX.Element => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedOption, setSelectedOption] = useState<null | TOption>(null);
     const handleToggleOptions = () => {
@@ -13,9 +14,10 @@ const Select: React.FC<SelectProps> = ({options, onChange, placeholder}): React.
         onChange(option);
         setIsOpen(false);
     };
+
     return (
         <SelectContainer>
-            <SelectButton onClick={handleToggleOptions} type='button' isOpen={isOpen}>
+            <SelectButton onClick={handleToggleOptions} type='button' isOpen={isOpen} error={!!error}>
                 {selectedOption ? selectedOption.label : placeholder}
             </SelectButton>
             {isOpen && (
@@ -27,6 +29,7 @@ const Select: React.FC<SelectProps> = ({options, onChange, placeholder}): React.
                     ))}
                 </OptionsContainer>
             )}
+            {error ? <ErrorMessage>{error.message}</ErrorMessage> : <Tip>{tip}</Tip>}
         </SelectContainer>
     );
 };

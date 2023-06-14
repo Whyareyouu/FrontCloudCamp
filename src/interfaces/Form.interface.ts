@@ -2,7 +2,7 @@ export interface IFormStepFirst {
     nickname: string;
     name: string;
     sername: string;
-    sex: 'man' | 'woman' | ''
+    sex: {label: string, value: string}
 }
 
 export interface IFormStepSecond {

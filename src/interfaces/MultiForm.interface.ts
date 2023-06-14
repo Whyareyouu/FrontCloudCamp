@@ -4,9 +4,9 @@ export interface MultiFormState {
     sername: string,
     phone: string,
     email: string,
-    sex: 'man' | 'woman' | '',
+    sex: {label: string, value: string},
     advantages: string[],
-    radio: number | '',
+    radio: number,
     checkbox: number[],
     about: string;
 }

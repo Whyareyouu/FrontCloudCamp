@@ -19,29 +19,29 @@ const FormStepSecond = () => {
         control,
         formState: {errors, isDirty, isValid}
     } = useForm<IFormStepSecond>({
+        mode: "onBlur",
         resolver: yupResolver(validationSchema),
         defaultValues: {
             advantages: formState.advantages,
             radio: formState.radio,
             checkbox: formState.checkbox
-        }
+        },
     })
 
-    const {fields, append, remove} = useFieldArray({
+    const {fields, append, remove} = useFieldArray<any>({
         control,
         name: "advantages",
     });
+
+    if (fields.length === 0) {
+        append('');
+    }
 
     const onSubmit = (formState: IFormStepSecond) => {
         dispatch(updateFormStepSecond({...formState}))
     }
 
-    if (fields.length === 0) {
-        append([{advantage: ''}, {advantage: ''}, {advantage: ''}]);
-    }
-
     const isFormValid = isDirty && isValid && errors;
-    console.log(errors)
     return (
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
             <div>
@@ -52,15 +52,16 @@ const FormStepSecond = () => {
                             <Controller control={control} name={`advantages.${index}` as const} render={({field}) =>
                                 (<>
                                     <Input id={`field-adavatages-${index + 1}`} onChange={field.onChange}
-                                           value={field.value.advantages} placeholder='Advantage'
-                                           error={errors.advantages}/>
+                                           value={field.value} placeholder='Advantage'
+                                           error={errors.advantages?.[index]}
+                                    />
                                 </>)
                             }/>
                             <RemoveAdvantage onClick={() => remove(index)}/>
                         </Advantage>
                     ))}
                     <Button type='button' appearance='border' style={{fontSize: "24px"}} id='button add'
-                            onClick={() => append({advantage: ''})}>+</Button>
+                            onClick={() => append('')}>+</Button>
                 </Advantages>
             </div>
             <div>

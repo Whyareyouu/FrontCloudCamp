@@ -6,6 +6,8 @@ import {updateFormStepFirst} from "../../../components/redux/slices/formSlice";
 import {IFormStepFirst} from "../../../interfaces/Form.interface";
 import {ButtonContainer, StyledForm} from "./FormStepFirst.styles";
 import Select from "../../../components/Select/Select";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {validationSchema} from "./validator";
 
 const options = [
     {value: 'man', label: 'man'},
@@ -18,6 +20,7 @@ const FormStepFirst = () => {
 
     const {register, handleSubmit, control, formState: {errors, isDirty, isValid}} = useForm<IFormStepFirst>({
         mode: 'onBlur',
+        resolver: yupResolver(validationSchema),
         defaultValues: {
             nickname: formFirstState.nickname,
             name: formFirstState.name,
@@ -67,11 +70,12 @@ const FormStepFirst = () => {
             <Label>
                 Sex
                 <Controller name='sex' control={control} render={({field}) => (
-                    <Select options={options} onChange={field.onChange} placeholder='Не выбрано'/>
+                    <Select options={options} onChange={field.onChange} placeholder='Не выбрано'
+                            error={errors.sex?.value} tip={"Выберите ваш пол"}/>
                 )}/>
             </Label>
             <ButtonContainer>
-                <Button appearance='border' type='button'>Назад</Button>
+                <Button appearance='border' type='submit'>Назад</Button>
                 <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
             </ButtonContainer>
         </StyledForm>

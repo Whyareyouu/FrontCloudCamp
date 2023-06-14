@@ -3,6 +3,7 @@ import ArrowDownIcon from './ArraowDown.png'
 
 type SelectButtonProps = {
     isOpen: boolean;
+    error?: boolean;
 }
 
 export const SelectContainer = styled.div`
@@ -13,7 +14,7 @@ export const SelectContainer = styled.div`
 export const SelectButton = styled.button<SelectButtonProps>`
   width: 100%;
   background-color: #fff;
-  border: 1px solid var(--gray);
+  border: 1px solid ${props=> props.error ? "var(--error)" : "var(--gray)"};
   border-radius: 5px;
 
   padding: 12px;
@@ -47,7 +48,7 @@ export const SelectButton = styled.button<SelectButtonProps>`
 
 export const OptionsContainer = styled.div`
   position: absolute;
-  top: 100%;
+  top: 47px;
   left: 0;
   width: 100%;
   max-height: 200px;
@@ -67,3 +68,8 @@ export const Option = styled.div`
     background-color: var(--gray-light);
   }
 `;
+export const Tip = styled.span`
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--gray-dark)
+`
