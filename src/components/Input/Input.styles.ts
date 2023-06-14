@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 type InputProps = {
-    error?: string;
+    error?: boolean;
 }
 
 export const InputContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;

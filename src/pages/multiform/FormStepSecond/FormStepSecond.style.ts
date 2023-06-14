@@ -13,13 +13,11 @@ export const Advantages = styled.div`
 `
 
 export const Advantage = styled.div`
+  max-width: 334px;
+  
   display: flex;
   gap: 16px;
   align-items: center;
-  
-  input{
-    max-width: 300px;
-  }
 `
 export const RemoveAdvantage = styled.button`
   width: 20px;

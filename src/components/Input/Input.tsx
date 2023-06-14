@@ -19,7 +19,7 @@ const Input = forwardRef(({
         return (
             <InputContainer>
                 <StyledInput className={className} id={id} name={name} placeholder={placeholder} value={value}
-                             disabled={disabled} ref={ref} onChange={onChange} error={error?.message}/>
+                             disabled={disabled} ref={ref} onChange={onChange} error={!!error}/>
                 {error ? <ErrorMessage>{error.message}</ErrorMessage> : <Tip>{children}</Tip>}
             </InputContainer>
         );

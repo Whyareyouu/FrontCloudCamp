@@ -7,6 +7,6 @@ export interface IFormStepFirst {
 
 export interface IFormStepSecond {
     advantages: string[];
-    radio: string,
-    checkbox: string[],
+    radio: number,
+    checkbox: number[],
 }

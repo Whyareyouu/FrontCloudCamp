@@ -71,7 +71,7 @@ const FormStepFirst = () => {
                 )}/>
             </Label>
             <ButtonContainer>
-                <Button appearance='border'>Назад</Button>
+                <Button appearance='border' type='button'>Назад</Button>
                 <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
             </ButtonContainer>
         </StyledForm>
