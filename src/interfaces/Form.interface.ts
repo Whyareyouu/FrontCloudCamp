@@ -19,3 +19,7 @@ export interface IFormStepSecond {
     radio: number,
     checkbox: number[],
 }
+
+export interface IFormStepThird{
+    about: string;
+}

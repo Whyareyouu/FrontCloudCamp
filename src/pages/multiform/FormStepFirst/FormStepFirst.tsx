@@ -14,7 +14,12 @@ const options = [
     {value: 'women', label: 'woman'},
 ];
 
-const FormStepFirst = () => {
+type FormStepFirstProps = {
+    onNext: () => void;
+    onPrev: () => void;
+}
+
+const FormStepFirst: React.FC<React.HTMLProps<HTMLFormElement> & FormStepFirstProps> = ({onNext, onPrev}) => {
     const formFirstState = useAppSelector(state => state.FormSliceReducer)
     const dispatch = useAppDispatch()
 
@@ -31,6 +36,7 @@ const FormStepFirst = () => {
 
     const onSubmit = (formState: IFormStepFirst) => {
         dispatch(updateFormStepFirst({...formState}))
+        onNext()
     }
 
 
@@ -81,7 +87,7 @@ const FormStepFirst = () => {
                 )}/>
             </Label>
             <ButtonContainer>
-                <Button appearance='border' type='button'>Назад</Button>
+                <Button appearance='border' type='button' onClick={onPrev}>Назад</Button>
                 <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
             </ButtonContainer>
         </StyledForm>

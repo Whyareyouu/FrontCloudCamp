@@ -9,7 +9,12 @@ import {updateFormStepSecond} from "../../../components/redux/slices/formSlice";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {validationSchema} from "./validator";
 
-const FormStepSecond:React.FC<React.HTMLProps<HTMLDivElement>> = () => {
+type FormStepSecondProps = {
+    onNext: () => void;
+    onPrev: () => void;
+}
+
+const FormStepSecond:React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondProps > = ({onNext, onPrev}) => {
     const formState = useAppSelector(state => state.FormSliceReducer)
     const dispatch = useAppDispatch()
 
@@ -35,6 +40,7 @@ const FormStepSecond:React.FC<React.HTMLProps<HTMLDivElement>> = () => {
 
     const onSubmit = (formState: IFormStepSecond) => {
         dispatch(updateFormStepSecond({...formState}))
+        onNext()
     }
 
     const isFormValid = isDirty && isValid && errors;
@@ -80,7 +86,7 @@ const FormStepSecond:React.FC<React.HTMLProps<HTMLDivElement>> = () => {
                 </Label>
             </div>
             <ButtonContainer>
-                <Button appearance='border'>Назад</Button>
+                <Button appearance='border' type='button' onClick={onPrev}>Назад</Button>
                 <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
             </ButtonContainer>
         </StyledForm>
