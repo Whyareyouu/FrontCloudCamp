@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {MultiFormState} from "../../../interfaces/MultiForm.interface";
-import {IFormStepFirst, IFormStepSecond} from "../../../interfaces/Form.interface";
+import {IFormStepFirst, IFormStepSecond, IStartedForm} from "../../../interfaces/Form.interface";
 
 
 const formInitialState: MultiFormState = {
@@ -20,14 +20,17 @@ const formSlice = createSlice({
     name: 'formSlice',
     initialState: formInitialState,
     reducers: {
+        updateStartedForm: (state, action: PayloadAction<IStartedForm>) => {
+            return {...state, ...action.payload}
+        },
         updateFormStepFirst: (state, action: PayloadAction<IFormStepFirst>) => {
             return {...state, ...action.payload}
         },
-        updateFormStepSecond:(state, action: PayloadAction<IFormStepSecond>) => {
+        updateFormStepSecond: (state, action: PayloadAction<IFormStepSecond>) => {
             return {...state, ...action.payload}
         }
     }
 })
 
-export const {updateFormStepFirst, updateFormStepSecond}= formSlice.actions
+export const {updateFormStepFirst, updateFormStepSecond, updateStartedForm} = formSlice.actions
 export const FormSliceReducer = formSlice.reducer

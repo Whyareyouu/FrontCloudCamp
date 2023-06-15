@@ -1,17 +1,32 @@
 import React from 'react';
 import {Button, Input, Label} from "../../components";
-import {About, Avatar, Divider, SimpleLink, List, Name, Wrapper, StyleForm} from "./Main.styles";
+import {About, Avatar, Divider, List, Name, SimpleLink, StyleForm, Wrapper} from "./Main.styles";
 import {useNavigate} from "react-router-dom";
 import InputMask from 'react-input-mask';
-import {useForm, Controller} from 'react-hook-form'
+import {Controller, useForm} from 'react-hook-form'
 import {IStartedForm} from "../../interfaces/Form.interface";
+import {yupResolver} from "@hookform/resolvers/yup";
+import {validationSchema} from "./validator";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux-hooks";
+import {updateStartedForm} from "../../components/redux/slices/formSlice";
 
 const MainPage = () => {
     const navigate = useNavigate()
-    const {register, control, handleSubmit} = useForm<IStartedForm>()
+    const formState = useAppSelector(state => state.FormSliceReducer)
+    const dispatch = useAppDispatch()
+
+    const {register, control, handleSubmit, formState: {errors}} = useForm<IStartedForm>({
+        mode: "onBlur",
+        resolver: yupResolver(validationSchema),
+        defaultValues: {
+            phone: formState.phone,
+            email: formState.email
+        }
+    })
+
 
     const onSubmit = (formState: IStartedForm) => {
-        console.log(formState)
+        dispatch(updateStartedForm(formState))
         navigate('/create')
     }
 
@@ -37,10 +52,6 @@ const MainPage = () => {
                     <Controller
                         name="phone"
                         control={control}
-                        defaultValue=""
-                        rules={{
-                            required: true,
-                        }}
                         render={({field}) => (
                             <InputMask
                                 mask="+7 (999) 999-99-99"
@@ -48,15 +59,15 @@ const MainPage = () => {
                                 value={field.value}
                                 onChange={field.onChange}
                             >
-                                <Input/>
+                                <Input error={errors.phone} children={'Введите ваш номер'} id='phone'/>
                             </InputMask>
                         )}
                     />
                 </Label>
                 <Label htmlFor='email'>
                     Email
-                    <Input placeholder='example@example.com' value='bionixxxd5@gmail.com'
-                           id='email' {...register('email')}/>
+                    <Input placeholder='example@example.com' id='email' {...register('email')} error={errors.email}
+                           children={'Введите вашу почту'}/>
                 </Label>
                 <Button appearance='primary' id='button-start'>Начать</Button>
             </StyleForm>

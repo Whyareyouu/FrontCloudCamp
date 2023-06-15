@@ -9,7 +9,7 @@ import {updateFormStepSecond} from "../../../components/redux/slices/formSlice";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {validationSchema} from "./validator";
 
-const FormStepSecond = () => {
+const FormStepSecond:React.FC<React.HTMLProps<HTMLDivElement>> = () => {
     const formState = useAppSelector(state => state.FormSliceReducer)
     const dispatch = useAppDispatch()
 
