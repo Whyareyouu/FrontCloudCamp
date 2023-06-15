@@ -18,7 +18,7 @@ const FormStepFirst = () => {
     const formFirstState = useAppSelector(state => state.FormSliceReducer)
     const dispatch = useAppDispatch()
 
-    const {register, handleSubmit, control, formState: {errors, isDirty, isValid}} = useForm<IFormStepFirst>({
+    const {register, handleSubmit, control, formState: {errors, isDirty, isValid}, reset} = useForm<IFormStepFirst>({
         mode: 'onBlur',
         resolver: yupResolver(validationSchema),
         defaultValues: {
@@ -33,6 +33,7 @@ const FormStepFirst = () => {
         dispatch(updateFormStepFirst({...formState}))
     }
 
+
     const isFormValid = isDirty && isValid && errors;
 
     return (
@@ -45,7 +46,8 @@ const FormStepFirst = () => {
                                value: true,
                                message: 'Это поле обязательно'
                            }
-                       })}/>
+                       })}
+                       onClick={() => reset({nickname: ''})}/>
             </Label>
             <Label>
                 Name
@@ -55,7 +57,9 @@ const FormStepFirst = () => {
                                value: true,
                                message: 'Это поле обязательно'
                            }
-                       })}/>
+                       })}
+                       onClick={() => reset({name: ''})}
+                />
             </Label>
             <Label>
                 Sername
@@ -65,7 +69,9 @@ const FormStepFirst = () => {
                                value: true,
                                message: 'Это поле обязательно'
                            }
-                       })}/>
+                       })}
+                       onClick={() => reset({sername: ''})}
+                />
             </Label>
             <Label>
                 Sex
@@ -75,7 +81,7 @@ const FormStepFirst = () => {
                 )}/>
             </Label>
             <ButtonContainer>
-                <Button appearance='border' type='submit'>Назад</Button>
+                <Button appearance='border' type='button'>Назад</Button>
                 <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
             </ButtonContainer>
         </StyledForm>

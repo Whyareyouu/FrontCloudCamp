@@ -14,13 +14,14 @@ const Input = forwardRef(({
                               onChange,
                               error,
                               children,
+                              onClick,
                               ...props
                           }: InputProps, ref: ForwardedRef<HTMLInputElement>): React.JSX.Element => {
         return (
             <InputContainer>
                 <StyledInput className={className} id={id} name={name} placeholder={placeholder} value={value}
                              disabled={disabled} ref={ref} onChange={onChange} error={!!error}/>
-                <StyledClearIcon/>
+                <StyledClearIcon onClick={onClick}/>
                 {error ? <ErrorMessage>{error.message}</ErrorMessage> : <Tip>{children}</Tip>}
             </InputContainer>
         );

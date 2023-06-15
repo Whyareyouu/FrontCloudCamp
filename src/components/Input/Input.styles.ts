@@ -50,4 +50,6 @@ export const StyledClearIcon = styled(ClearIcon)`
   position: absolute;
   top: 12px;
   right: 12px;
+  
+  cursor: pointer;
 `

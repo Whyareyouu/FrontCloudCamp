@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   
   padding: 24px;
   
-  input{
+  label{
     max-width: 400px;
   }
 `
