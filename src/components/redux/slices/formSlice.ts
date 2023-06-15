@@ -10,7 +10,7 @@ const formInitialState: MultiFormState = {
     phone: '',
     email: '',
     sex: {label: '', value: ''},
-    advantages: [''],
+    advantages: [{advantages: ''}],
     radio: 0,
     checkbox: [],
     about: ''

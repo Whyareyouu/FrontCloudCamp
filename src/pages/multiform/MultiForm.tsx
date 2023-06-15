@@ -20,7 +20,6 @@ const MultiForm = () => {
     switch (step) {
         case 1:
             return <FormStepFirst/>
-
         case 2:
             return <FormStepSecond/>
         case 3:

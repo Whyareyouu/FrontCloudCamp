@@ -78,7 +78,12 @@ export const SimpleLink = styled.a`
   }
 `
 
-export const Devider = styled.hr`
+export const Divider = styled.hr`
   height: 1px;
   border: 1px solid #00000014;
+`
+export const StyleForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap:24px;
 `

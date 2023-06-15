@@ -19,7 +19,7 @@ const FormStepSecond = () => {
         control,
         formState: {errors, isDirty, isValid}
     } = useForm<IFormStepSecond>({
-        mode: "onBlur",
+        mode: "onBlur", //@ts-ignore
         resolver: yupResolver(validationSchema),
         defaultValues: {
             advantages: formState.advantages,
@@ -28,14 +28,10 @@ const FormStepSecond = () => {
         },
     })
 
-    const {fields, append, remove} = useFieldArray<any>({
+    const {fields, append, update, remove} = useFieldArray({
         control,
         name: "advantages",
     });
-
-    if (fields.length === 0) {
-        append({advantages: ''});
-    }
 
     const onSubmit = (formState: IFormStepSecond) => {
         dispatch(updateFormStepSecond({...formState}))
@@ -53,7 +49,8 @@ const FormStepSecond = () => {
                                 (<>
                                     <Input id={`field-adavatages-${index + 1}`} onChange={field.onChange}
                                            value={field.value.advantages} placeholder='Advantage'
-                                           error={errors.advantages?.[index]}
+                                           error={errors.advantages?.[index]?.advantages}
+                                           onClick={() => update(index, {advantages: ''})}
                                     />
                                 </>)
                             }/>

@@ -1,10 +1,20 @@
 import React from 'react';
 import {Button, Input, Label} from "../../components";
-import {About, Avatar, Devider, SimpleLink, List, Name, Wrapper} from "./Main.styles";
+import {About, Avatar, Divider, SimpleLink, List, Name, Wrapper, StyleForm} from "./Main.styles";
 import {useNavigate} from "react-router-dom";
+import InputMask from 'react-input-mask';
+import {useForm, Controller} from 'react-hook-form'
+import {IStartedForm} from "../../interfaces/Form.interface";
 
 const MainPage = () => {
     const navigate = useNavigate()
+    const {register, control, handleSubmit} = useForm<IStartedForm>()
+
+    const onSubmit = (formState: IStartedForm) => {
+        console.log(formState)
+        navigate('/create')
+    }
+
     return (
         <Wrapper>
             <About>
@@ -20,16 +30,36 @@ const MainPage = () => {
                     </div>
                 </div>
             </About>
-            <Devider/>
-            <Label htmlFor='phone'>
-                Номер телефона
-                <Input placeholder='+7 999 999-99-99' value='+7 920 303-25-83' disabled={true} id='phone'/>
-            </Label>
-            <Label htmlFor='email'>
-                Email
-                <Input placeholder='example@example.com' value='bionixxxd5@gmail.com' disabled={true} id='email'/>
-            </Label>
-            <Button appearance='primary' onClick={() => navigate('/create')} id='button-start'>Начать</Button>
+            <Divider/>
+            <StyleForm onSubmit={handleSubmit(onSubmit)}>
+                <Label htmlFor='phone'>
+                    Номер телефона
+                    <Controller
+                        name="phone"
+                        control={control}
+                        defaultValue=""
+                        rules={{
+                            required: true,
+                        }}
+                        render={({field}) => (
+                            <InputMask
+                                mask="+7 (999) 999-99-99"
+                                alwaysShowMask={true}
+                                value={field.value}
+                                onChange={field.onChange}
+                            >
+                                <Input/>
+                            </InputMask>
+                        )}
+                    />
+                </Label>
+                <Label htmlFor='email'>
+                    Email
+                    <Input placeholder='example@example.com' value='bionixxxd5@gmail.com'
+                           id='email' {...register('email')}/>
+                </Label>
+                <Button appearance='primary' id='button-start'>Начать</Button>
+            </StyleForm>
         </Wrapper>
     );
 };

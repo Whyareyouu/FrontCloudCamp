@@ -5,8 +5,11 @@ export interface MultiFormState {
     phone: string,
     email: string,
     sex: {label: string, value: string},
-    advantages: string[],
+    advantages: Advantages[],
     radio: number,
     checkbox: number[],
     about: string;
+}
+type Advantages = {
+    advantages: string
 }
