@@ -34,7 +34,7 @@ const FormStepSecond = () => {
     });
 
     if (fields.length === 0) {
-        append('');
+        append({advantages: ''});
     }
 
     const onSubmit = (formState: IFormStepSecond) => {
@@ -52,7 +52,7 @@ const FormStepSecond = () => {
                             <Controller control={control} name={`advantages.${index}` as const} render={({field}) =>
                                 (<>
                                     <Input id={`field-adavatages-${index + 1}`} onChange={field.onChange}
-                                           value={field.value} placeholder='Advantage'
+                                           value={field.value.advantages} placeholder='Advantage'
                                            error={errors.advantages?.[index]}
                                     />
                                 </>)
@@ -61,7 +61,7 @@ const FormStepSecond = () => {
                         </Advantage>
                     ))}
                     <Button type='button' appearance='border' style={{fontSize: "24px"}} id='button add'
-                            onClick={() => append('')}>+</Button>
+                            onClick={() => append({advantages: ''})}>+</Button>
                 </Advantages>
             </div>
             <div>
