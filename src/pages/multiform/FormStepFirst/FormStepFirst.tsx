@@ -11,7 +11,7 @@ import {validationSchema} from "./validator";
 
 const options = [
     {value: 'man', label: 'man'},
-    {value: 'women', label: 'woman'},
+    {value: 'woman', label: 'woman'},
 ];
 
 type FormStepFirstProps = {
@@ -46,20 +46,24 @@ const FormStepFirst: React.FC<React.HTMLProps<HTMLFormElement> & FormStepFirstPr
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
             <Label>
                 Nickname
-                <Input placeholder='Nickname' error={errors.nickname} children={'Введите ваш никнейм'}
+                <Input placeholder='Nickname' error={errors.nickname} id='field-nickname'
+                       children={'Введите ваш никнейм'}
                        {...register('nickname')}
                        onClick={() => reset({nickname: ''})}/>
             </Label>
             <Label>
                 Name
-                <Input placeholder='Name' error={errors.name} children={'Введите ваше имя'}
+                <Input placeholder='Name' error={errors.name} id='field-name'
+                       children={'Введите ваше имя'}
                        {...register('name')}
                        onClick={() => reset({name: ''})}
                 />
             </Label>
             <Label>
                 Sername
-                <Input placeholder='Surname' error={errors.sername} children={'Введите вашу фамилию'}
+                <Input placeholder='Surname' error={errors.sername}
+                       id='field-sername'
+                       children={'Введите вашу фамилию'}
                        {...register('sername')}
                        onClick={() => reset({sername: ''})}
                 />
@@ -67,13 +71,14 @@ const FormStepFirst: React.FC<React.HTMLProps<HTMLFormElement> & FormStepFirstPr
             <Label>
                 Sex
                 <Controller name='sex' control={control} render={({field}) => (
-                    <Select options={options} onChange={field.onChange} placeholder='Не выбрано'
+                    <Select options={options} onChange={field.onChange} id='field-sex'
+                            placeholder='Не выбрано'
                             error={errors.sex?.value} tip={"Выберите ваш пол"} value={field.value}/>
                 )}/>
             </Label>
             <ButtonContainer>
-                <Button appearance='border' type='button' onClick={onPrev}>Назад</Button>
-                <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
+                <Button appearance='border' type='button' onClick={onPrev} id='button-back'>Назад</Button>
+                <Button appearance='primary' disabled={!isFormValid} id='button-next'>Далее</Button>
             </ButtonContainer>
         </StyledForm>
     );

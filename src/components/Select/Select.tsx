@@ -3,7 +3,7 @@ import {Option, OptionsContainer, SelectButton, SelectContainer, Tip} from "./Se
 import {SelectProps, TOption} from "./Select.interface";
 import {ErrorMessage} from "../index";
 
-const Select: React.FC<SelectProps> = ({options, onChange, placeholder, error, tip, value}): React.JSX.Element => {
+const Select: React.FC<SelectProps> = ({options, onChange, placeholder, error, tip, value, id}): React.JSX.Element => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedOption, setSelectedOption] = useState<null | TOption>(null);
     React.useEffect(()=> {
@@ -24,13 +24,13 @@ const Select: React.FC<SelectProps> = ({options, onChange, placeholder, error, t
 
     return (
         <SelectContainer>
-            <SelectButton onClick={handleToggleOptions} type='button' isOpen={isOpen} error={!!error}>
+            <SelectButton onClick={handleToggleOptions} type='button' isOpen={isOpen} error={!!error} id={id}>
                 {selectedOption ? selectedOption.label : placeholder}
             </SelectButton>
             {isOpen && (
                 <OptionsContainer>
                     {options.map((option) => (
-                        <Option key={option.value} onClick={() => handleSelectOption(option)}>
+                        <Option key={option.value} onClick={() => handleSelectOption(option)} id={`field-sex-option-${option.value}`}>
                             {option.label}
                         </Option>
                     ))}

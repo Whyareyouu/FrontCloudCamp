@@ -7,6 +7,7 @@ export type TOption = {
 }
 
 export interface SelectProps {
+    id: string;
     options: TOption[];
     onChange: (option: TOption) => void;
     placeholder: string;

@@ -60,7 +60,7 @@ const FormStepSecond: React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondP
                                     onClick={() => update(index, {advantages: ''})}
                                     placeholder='Advantage'
                                 />
-                                <RemoveAdvantage onClick={() => remove(index)}/>
+                                <RemoveAdvantage onClick={() => remove(index)} id={`button-remove-${index + 1}`}/>
                             </Advantage>
                         )
                     )}
@@ -71,9 +71,9 @@ const FormStepSecond: React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondP
             <div>
                 <Label gap={2}>
                     Checkbox group
-                    <Checkbox children='1' id='field-checkbox-group-option-1' {...register('checkbox')} value="1" />
-                    <Checkbox children='2' id='field-checkbox-group-option-2' {...register('checkbox')} value="2" />
-                    <Checkbox children='3' id='field-checkbox-group-option-3' {...register('checkbox')} value="3" />
+                    <Checkbox children='1' id='field-checkbox-group-option-1' {...register('checkbox')} value="1"/>
+                    <Checkbox children='2' id='field-checkbox-group-option-2' {...register('checkbox')} value="2"/>
+                    <Checkbox children='3' id='field-checkbox-group-option-3' {...register('checkbox')} value="3"/>
                     {errors.checkbox && <ErrorMessage>{errors.checkbox?.message}</ErrorMessage>}
                 </Label>
             </div>
@@ -87,8 +87,8 @@ const FormStepSecond: React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondP
                 </Label>
             </div>
             <ButtonContainer>
-                <Button appearance='border' type='button' onClick={onPrev}>Назад</Button>
-                <Button appearance='primary' disabled={!isFormValid}>Далее</Button>
+                <Button appearance='border' type='button' onClick={onPrev} id='button-back'>Back</Button>
+                <Button appearance='primary' disabled={!isFormValid} id='button-next'>Далее</Button>
             </ButtonContainer>
         </StyledForm>
     );

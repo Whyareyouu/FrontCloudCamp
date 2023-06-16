@@ -52,12 +52,12 @@ const FormStepThird: React.FC<React.HTMLProps<HTMLFormElement> & FormStepThirdPr
             <Label>
                 About
                 <Controller control={control} name={'about'} render={({field}) => (
-                    <Textarea {...field} children={'Введите информацию о себе'} error={errors.about}/>
+                    <Textarea {...field} children={'Введите информацию о себе'} error={errors.about} id="field-about"/>
                 )}/>
             </Label>
             <ButtonContainer>
-                <Button appearance='border' onClick={onPrev}>Назад</Button>
-                <Button appearance='primary' onClick={onNext}>Отправить</Button>
+                <Button appearance='border' onClick={onPrev} id='button-back'>Назад</Button>
+                <Button appearance='primary' onClick={onNext} id='button-send'>Отправить</Button>
             </ButtonContainer>
         </form>
     );
