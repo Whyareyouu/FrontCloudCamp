@@ -8,14 +8,14 @@ import {IStartedForm} from "../../interfaces/Form.interface";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {validationSchema} from "./validator";
 import {useAppDispatch, useAppSelector} from "../../hooks/redux-hooks";
-import {updateStartedForm} from "../../components/redux/slices/formSlice";
+import {updateStartedForm} from "../../redux/slices/formSlice";
 
 const MainPage = () => {
     const navigate = useNavigate()
     const formState = useAppSelector(state => state.FormSliceReducer)
     const dispatch = useAppDispatch()
 
-    const {register, control, handleSubmit, formState: {errors}} = useForm<IStartedForm>({
+    const {register, control, handleSubmit,reset, formState: {errors}} = useForm<IStartedForm>({
         mode: "onBlur",
         resolver: yupResolver(validationSchema),
         defaultValues: {
@@ -38,9 +38,9 @@ const MainPage = () => {
                     <Name>Никита Чернов</Name>
                     <div>
                         <List>
-                            <li><SimpleLink href='#' target='_blank'>Telegram</SimpleLink></li>
-                            <li><SimpleLink href='#' target='_blank'>GitHub</SimpleLink></li>
-                            <li><SimpleLink href='#' target='_blank'>Resume</SimpleLink></li>
+                            <li><SimpleLink href='https://t.me/whyareyou112' target='_blank'>Telegram</SimpleLink></li>
+                            <li><SimpleLink href='https://github.com/Whyareyouu' target='_blank'>GitHub</SimpleLink></li>
+                            <li><SimpleLink href='https://drive.google.com/file/d/18m-fniqfxeZOTdnQLXceK-huhwMyP3wb/view?usp=sharing' target='_blank'>Resume</SimpleLink></li>
                         </List>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const MainPage = () => {
                 <Label htmlFor='email'>
                     Email
                     <Input placeholder='example@example.com' id='email' {...register('email')} error={errors.email}
-                           children={'Введите вашу почту'}/>
+                           children={'Введите вашу почту'} onClick={()=> reset({email: ''})}/>
                 </Label>
                 <Button appearance='primary' id='button-start'>Начать</Button>
             </StyleForm>

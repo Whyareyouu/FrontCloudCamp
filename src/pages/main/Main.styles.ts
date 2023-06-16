@@ -2,13 +2,14 @@ import styled from 'styled-components'
 import FolderIcon from '../../assets/Folder.svg'
 
 export const Wrapper = styled.div`
-  max-width: 852px;
+  max-width: 900px;
+  margin: 24px auto 0;
   
   display: flex;
   flex-direction: column;
   gap: 24px;
   
-  padding: 24px;
+  padding: 25px 24px;
   
   label{
     max-width: 400px;
@@ -86,4 +87,7 @@ export const StyleForm = styled.form`
   display: flex;
   flex-direction: column;
   gap:24px;
+  button{
+    margin-top: 24px;
+  }
 `

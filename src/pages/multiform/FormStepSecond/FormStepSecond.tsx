@@ -4,9 +4,9 @@ import {Advantage, Advantages, ButtonContainer, RemoveAdvantage, StyledForm} fro
 import {IFormStepSecond} from "../../../interfaces/Form.interface";
 import {useFieldArray, useForm} from "react-hook-form";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux-hooks";
-import {updateFormStepSecond} from "../../../components/redux/slices/formSlice";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {validationSchema} from "./validator";
+import {updateFormStepSecond} from "../../../redux/slices/formSlice";
 
 type FormStepSecondProps = {
     onNext: () => void;

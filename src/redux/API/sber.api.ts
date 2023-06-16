@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IFormData} from "../../../interfaces/FormData.interface";
+import {IFormData} from "../../interfaces/FormData.interface";
 
 export const sberApi = createApi({
     reducerPath: 'sberApi',

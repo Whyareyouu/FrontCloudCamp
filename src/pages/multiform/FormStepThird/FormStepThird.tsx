@@ -4,12 +4,12 @@ import {Controller, useForm} from "react-hook-form";
 import {IFormStepThird} from "../../../interfaces/Form.interface";
 import {ButtonContainer} from "./FormStepThird.styles";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux-hooks";
-import {updateFormStepThird} from "../../../components/redux/slices/formSlice";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {validationSchema} from "./validator";
-import {usePostFormDataMutation} from "../../../components/redux/API/sber.api";
 import {convertToValidData} from "../../../helpers/helpers";
 import FormStepThirdModal from "./FormStepThirdModal/FormStepThirdModal";
+import {usePostFormDataMutation} from "../../../redux/API/sber.api";
+import {updateFormStepThird} from "../../../redux/slices/formSlice";
 
 type FormStepThirdProps = {
     onNext: () => void;
@@ -29,7 +29,8 @@ const FormStepThird: React.FC<React.HTMLProps<HTMLFormElement> & FormStepThirdPr
         setIsOpen(false);
     };
 
-    const {handleSubmit, control, formState: {errors}} = useForm<IFormStepThird>({
+    const {handleSubmit, control, formState: {errors, isValid}} = useForm<IFormStepThird>({
+        mode: 'onChange',
         resolver: yupResolver(validationSchema),
         defaultValues: {about: formData.about}
     })
@@ -43,6 +44,7 @@ const FormStepThird: React.FC<React.HTMLProps<HTMLFormElement> & FormStepThirdPr
         }
 
     }
+    const isFormValid = isValid && errors;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             {isOpen && (
@@ -56,7 +58,7 @@ const FormStepThird: React.FC<React.HTMLProps<HTMLFormElement> & FormStepThirdPr
             </Label>
             <ButtonContainer>
                 <Button appearance='border' onClick={onPrev} id='button-back'>Назад</Button>
-                <Button appearance='primary' onClick={onNext} id='button-send'>Отправить</Button>
+                <Button appearance='primary' onClick={onNext} id='button-send' disabled={!isFormValid}>Отправить</Button>
             </ButtonContainer>
         </form>
     );

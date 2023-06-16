@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {MultiFormState} from "../../../interfaces/MultiForm.interface";
-import {IFormStepFirst, IFormStepSecond, IFormStepThird, IStartedForm} from "../../../interfaces/Form.interface";
+import {MultiFormState} from "../../interfaces/MultiForm.interface";
+import {IFormStepFirst, IFormStepSecond, IFormStepThird, IStartedForm} from "../../interfaces/Form.interface";
 
 
 const formInitialState: MultiFormState = {

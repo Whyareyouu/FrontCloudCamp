@@ -3,19 +3,26 @@ import FormStepFirst from "./FormStepFirst/FormStepFirst";
 import FormStepSecond from "./FormStepSecond/FormStepSecond";
 import FormStepThird from "./FormStepThird/FormStepThird";
 import {useNavigate} from "react-router-dom";
+import {useAppDispatch} from "../../hooks/redux-hooks";
+import {setNextStep, setPrevStep} from "../../redux/slices/stepSlice";
 
-
-const MultiForm = () => {
+const MultiForm: React.FC<React.HTMLProps<HTMLFormElement>> = () => {
     const [step, setStep] = useState<number>(1)
+    const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const handleNextPage = () => {
         if (step === 3) return
-            setStep(step + 1)
+        setStep(step + 1)
+        dispatch(setNextStep())
     }
 
     const handlePrevPage = () => {
-        if (step === 1) navigate('/')
+        if (step === 1) {
+            navigate('/')
+            return
+        }
         setStep(step - 1)
+        dispatch(setPrevStep())
     }
 
     switch (step) {
