@@ -11,13 +11,15 @@ const Checkbox = forwardRef(({
                                  children,
                                  value,
                                  onChange,
+                                 checked,
                                  ...props
                              }: CheckboxProps, ref: ForwardedRef<HTMLInputElement>): React.JSX.Element => {
         return (
             <div>
                 <Label direction='row'>
-                    <StyledCheckBox type='checkbox' name={name} id={id} className={className} value={value} onChange={onChange}
-                           ref={ref}/>
+                    <StyledCheckBox type='checkbox' name={name} id={id} className={className} value={value}
+                                    onChange={onChange} checked={checked}
+                                    ref={ref}/>
                     {children}
                 </Label>
             </div>

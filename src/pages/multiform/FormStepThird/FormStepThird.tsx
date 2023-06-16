@@ -24,7 +24,6 @@ const FormStepThird: React.FC<React.HTMLProps<HTMLFormElement> & FormStepThirdPr
     })
 
     const onSubmit = (formState: IFormStepThird) => {
-        console.log(formState)
         dispatch(updateFormStepThird(formState))
     }
 

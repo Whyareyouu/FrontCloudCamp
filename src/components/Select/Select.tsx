@@ -3,9 +3,16 @@ import {Option, OptionsContainer, SelectButton, SelectContainer, Tip} from "./Se
 import {SelectProps, TOption} from "./Select.interface";
 import {ErrorMessage} from "../index";
 
-const Select: React.FC<SelectProps> = ({options, onChange, placeholder, error, tip}): React.JSX.Element => {
+const Select: React.FC<SelectProps> = ({options, onChange, placeholder, error, tip, value}): React.JSX.Element => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedOption, setSelectedOption] = useState<null | TOption>(null);
+    React.useEffect(()=> {
+        if(Object.values(value).filter(value => value).length !== 0){
+            setSelectedOption(value)
+        }
+    }, [value])
+
+
     const handleToggleOptions = () => {
         setIsOpen(!isOpen);
     };

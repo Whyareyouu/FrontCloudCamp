@@ -12,4 +12,5 @@ export interface SelectProps {
     placeholder: string;
     error?: FieldError;
     tip?: string;
+    value: TOption;
 }

@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 
 
 const MultiForm = () => {
-    const [step, setStep] = useState<number>(3)
+    const [step, setStep] = useState<number>(2)
     const navigate = useNavigate()
     const handleNextPage = () => {
         if (step === 3) return

@@ -3,7 +3,7 @@ import {Button, Checkbox, ErrorMessage, Input, Label} from "../../../components"
 import RadioButton from "../../../components/RadioButton/RadioButton";
 import {Advantage, Advantages, ButtonContainer, RemoveAdvantage, StyledForm} from "./FormStepSecond.style";
 import {IFormStepSecond} from "../../../interfaces/Form.interface";
-import {Controller, useFieldArray, useForm} from "react-hook-form";
+import {useFieldArray, useForm} from "react-hook-form";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux-hooks";
 import {updateFormStepSecond} from "../../../components/redux/slices/formSlice";
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -14,7 +14,7 @@ type FormStepSecondProps = {
     onPrev: () => void;
 }
 
-const FormStepSecond:React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondProps > = ({onNext, onPrev}) => {
+const FormStepSecond: React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondProps> = ({onNext, onPrev}) => {
     const formState = useAppSelector(state => state.FormSliceReducer)
     const dispatch = useAppDispatch()
 
@@ -22,13 +22,13 @@ const FormStepSecond:React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondPr
         register,
         handleSubmit,
         control,
-        formState: {errors, isDirty, isValid}
+        formState: {errors, isValid}
     } = useForm<IFormStepSecond>({
-        mode: "onBlur", //@ts-ignore
+        mode: "onChange", //@ts-ignore
         resolver: yupResolver(validationSchema),
         defaultValues: {
             advantages: formState.advantages,
-            radio: formState.radio,
+            radio: formState.radio.toString(),
             checkbox: formState.checkbox
         },
     })
@@ -43,26 +43,27 @@ const FormStepSecond:React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondPr
         onNext()
     }
 
-    const isFormValid = isDirty && isValid && errors;
+    const isFormValid = isValid && errors;
     return (
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <Advantages>
                     Advantages
-                    {fields.map((field, index) => (
-                        <Advantage key={field.id}>
-                            <Controller control={control} name={`advantages.${index}` as const} render={({field}) =>
-                                (<>
-                                    <Input id={`field-adavatages-${index + 1}`} onChange={field.onChange}
-                                           value={field.value.advantages} placeholder='Advantage'
-                                           error={errors.advantages?.[index]?.advantages}
-                                           onClick={() => update(index, {advantages: ''})}
-                                    />
-                                </>)
-                            }/>
-                            <RemoveAdvantage onClick={() => remove(index)}/>
-                        </Advantage>
-                    ))}
+                    {fields.map((item, index) =>
+                        (
+                            <Advantage key={item.id}>
+                                <Input
+                                    id={`field-adavatages-${index + 1}`}
+                                    {...register(`advantages.${index}.advantages` as const,)}
+                                    defaultValue={item.advantages}
+                                    error={errors.advantages?.[index]?.advantages}
+                                    onClick={() => update(index, {advantages: ''})}
+                                    placeholder='Advantage'
+                                />
+                                <RemoveAdvantage onClick={() => remove(index)}/>
+                            </Advantage>
+                        )
+                    )}
                     <Button type='button' appearance='border' style={{fontSize: "24px"}} id='button add'
                             onClick={() => append({advantages: ''})}>+</Button>
                 </Advantages>

@@ -23,8 +23,8 @@ const FormStepFirst: React.FC<React.HTMLProps<HTMLFormElement> & FormStepFirstPr
     const formFirstState = useAppSelector(state => state.FormSliceReducer)
     const dispatch = useAppDispatch()
 
-    const {register, handleSubmit, control, formState: {errors, isDirty, isValid}, reset} = useForm<IFormStepFirst>({
-        mode: 'onBlur',
+    const {register, handleSubmit, control, formState: {errors, isValid}, reset} = useForm<IFormStepFirst>({
+        mode: 'onChange',
         resolver: yupResolver(validationSchema),
         defaultValues: {
             nickname: formFirstState.nickname,
@@ -40,42 +40,27 @@ const FormStepFirst: React.FC<React.HTMLProps<HTMLFormElement> & FormStepFirstPr
     }
 
 
-    const isFormValid = isDirty && isValid && errors;
+    const isFormValid = isValid && errors;
 
     return (
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
             <Label>
                 Nickname
                 <Input placeholder='Nickname' error={errors.nickname} children={'Введите ваш никнейм'}
-                       {...register('nickname', {
-                           required: {
-                               value: true,
-                               message: 'Это поле обязательно'
-                           }
-                       })}
+                       {...register('nickname')}
                        onClick={() => reset({nickname: ''})}/>
             </Label>
             <Label>
                 Name
                 <Input placeholder='Name' error={errors.name} children={'Введите ваше имя'}
-                       {...register('name', {
-                           required: {
-                               value: true,
-                               message: 'Это поле обязательно'
-                           }
-                       })}
+                       {...register('name')}
                        onClick={() => reset({name: ''})}
                 />
             </Label>
             <Label>
                 Sername
                 <Input placeholder='Surname' error={errors.sername} children={'Введите вашу фамилию'}
-                       {...register('sername', {
-                           required: {
-                               value: true,
-                               message: 'Это поле обязательно'
-                           }
-                       })}
+                       {...register('sername')}
                        onClick={() => reset({sername: ''})}
                 />
             </Label>
@@ -83,7 +68,7 @@ const FormStepFirst: React.FC<React.HTMLProps<HTMLFormElement> & FormStepFirstPr
                 Sex
                 <Controller name='sex' control={control} render={({field}) => (
                     <Select options={options} onChange={field.onChange} placeholder='Не выбрано'
-                            error={errors.sex?.value} tip={"Выберите ваш пол"}/>
+                            error={errors.sex?.value} tip={"Выберите ваш пол"} value={field.value}/>
                 )}/>
             </Label>
             <ButtonContainer>
