@@ -7,7 +7,7 @@ export interface MultiFormState {
     sex: {label: string, value: string},
     advantages: Advantages[],
     radio: number | string,
-    checkbox: number[],
+    checkbox: number[] | string[],
     about: string;
 }
 type Advantages = {

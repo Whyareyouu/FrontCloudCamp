@@ -17,7 +17,7 @@ type Advantages = {
 export interface IFormStepSecond {
     advantages: Advantages[];
     radio: string,
-    checkbox: number[],
+    checkbox: number[] | string[],
 }
 
 export interface IFormStepThird{

@@ -29,7 +29,7 @@ const FormStepSecond: React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondP
         defaultValues: {
             advantages: formState.advantages,
             radio: formState.radio.toString(),
-            checkbox: formState.checkbox
+            checkbox: formState.checkbox.map(element => element.toString())
         },
     })
 
@@ -71,9 +71,9 @@ const FormStepSecond: React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondP
             <div>
                 <Label gap={2}>
                     Checkbox group
-                    <Checkbox children='1' id='field-checkbox-group-option-1' value={1} {...register('checkbox')}/>
-                    <Checkbox children='2' id='field-checkbox-group-option-2' value={2} {...register('checkbox')}/>
-                    <Checkbox children='3' id='field-checkbox-group-option-3' value={3} {...register('checkbox')}/>
+                    <Checkbox children='1' id='field-checkbox-group-option-1' {...register('checkbox')} value="1" />
+                    <Checkbox children='2' id='field-checkbox-group-option-2' {...register('checkbox')} value="2" />
+                    <Checkbox children='3' id='field-checkbox-group-option-3' {...register('checkbox')} value="3" />
                     {errors.checkbox && <ErrorMessage>{errors.checkbox?.message}</ErrorMessage>}
                 </Label>
             </div>
