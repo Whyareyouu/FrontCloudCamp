@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button, Checkbox, ErrorMessage, Input, Label} from "../../../components";
-import RadioButton from "../../../components/RadioButton/RadioButton";
+import {Button, Checkbox, ErrorMessage, Input, Label, RadioButton} from "../../../components";
 import {Advantage, Advantages, ButtonContainer, RemoveAdvantage, StyledForm} from "./FormStepSecond.style";
 import {IFormStepSecond} from "../../../interfaces/Form.interface";
 import {useFieldArray, useForm} from "react-hook-form";

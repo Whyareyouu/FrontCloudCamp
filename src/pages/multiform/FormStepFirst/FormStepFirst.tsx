@@ -1,11 +1,10 @@
 import React from 'react';
 import {Controller, useForm} from "react-hook-form";
-import {Button, Input, Label} from "../../../components";
+import {Button, Input, Label, Select} from "../../../components";
 import {useAppDispatch, useAppSelector} from "../../../hooks/redux-hooks";
 import {updateFormStepFirst} from "../../../components/redux/slices/formSlice";
 import {IFormStepFirst} from "../../../interfaces/Form.interface";
 import {ButtonContainer, StyledForm} from "./FormStepFirst.styles";
-import Select from "../../../components/Select/Select";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {validationSchema} from "./validator";
 

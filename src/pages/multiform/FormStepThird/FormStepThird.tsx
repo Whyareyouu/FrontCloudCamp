@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button, Label} from "../../../components";
-import Textarea from "../../../components/Textarea/Textarea";
+import {Button, Label, Textarea} from "../../../components";
 import {Controller, useForm} from "react-hook-form";
 import {IFormStepThird} from "../../../interfaces/Form.interface";
 import {ButtonContainer} from "./FormStepThird.styles";
