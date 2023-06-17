@@ -43,6 +43,7 @@ const FormStepSecond: React.FC<React.HTMLProps<HTMLDivElement> & FormStepSecondP
     }
 
     const isFormValid = isValid && errors;
+
     return (
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
             <div>

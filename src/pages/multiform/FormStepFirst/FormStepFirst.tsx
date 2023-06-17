@@ -38,7 +38,6 @@ const FormStepFirst: React.FC<React.HTMLProps<HTMLFormElement> & FormStepFirstPr
         onNext()
     }
 
-
     const isFormValid = isValid && errors;
 
     return (
