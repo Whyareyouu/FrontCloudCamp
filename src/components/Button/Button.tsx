@@ -1,5 +1,5 @@
 import React from 'react';
-import {ButtonProps} from "./Button.interface";
+import {ButtonProps} from "./Button.props";
 import {StyledButton} from "./Button.styles";
 
 const Button = ({type, className, id, children, appearance, onClick, disabled, style, ...props}: ButtonProps) => {

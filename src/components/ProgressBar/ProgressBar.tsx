@@ -1,6 +1,6 @@
 import React from 'react';
 import {CircleContainer, Container, Line, StepCircle, StyledSpan} from "./ProgressBar.styles";
-import {ProgressBarProps} from "./ProgressBar.interface";
+import {ProgressBarProps} from "./ProgressBar.props";
 import CurrentIcon from "./CurrentIcon";
 import ReadyIcon from "./ReadyIcon";
 

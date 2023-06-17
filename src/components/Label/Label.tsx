@@ -1,6 +1,6 @@
 import React from 'react';
 import {CustomLabel} from "./Label.styles";
-import {LabelProps} from "./Label.interface";
+import {LabelProps} from "./Label.props";
 
 const Label = ({className, children, direction = 'column', gap = 8, htmlFor, ...props}: LabelProps) => {
     return (

@@ -20,6 +20,9 @@ export const About = styled.div`
   display: flex;
   gap: 24px;
   align-items: center;
+  @media screen and (max-width: 380px){
+    flex-direction: column;
+  }
 `
 export const Avatar = styled.div`
   display: flex;
@@ -41,6 +44,7 @@ export const Avatar = styled.div`
     display: block;
     content: 'НЧ';
   }
+  
 `
 export const Name = styled.h1`
   font-weight: 600;
@@ -65,6 +69,9 @@ export const List = styled.ul`
       height: 16px;
       background-image: url(${FolderIcon})
     }
+  }
+  @media screen and (max-width: 380px){
+    flex-direction: column;
   }
 `
 export const SimpleLink = styled.a`

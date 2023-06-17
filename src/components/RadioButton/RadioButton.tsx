@@ -1,6 +1,6 @@
 import React, {ForwardedRef, forwardRef} from 'react';
 import {CustomRadioButton, CustomRadioInput, CustomRadioText} from "./RadioButton.styles";
-import {RadioButtonProps} from "./RadioButton.interface";
+import {RadioButtonProps} from "./RadioButton.props";
 
 const RadioButton = forwardRef(({
                                     id,

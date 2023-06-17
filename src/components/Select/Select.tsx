@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Option, OptionsContainer, SelectButton, SelectContainer, Tip} from "./Select.style";
-import {SelectProps, TOption} from "./Select.interface";
+import {SelectProps, TOption} from "./Select.props";
 import {ErrorMessage} from "../index";
 
 const Select: React.FC<SelectProps> = ({options, onChange, placeholder, error, tip, value, id}): React.JSX.Element => {

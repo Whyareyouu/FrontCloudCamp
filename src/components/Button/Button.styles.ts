@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components'
-import {ButtonProps} from "./Button.interface";
+import {ButtonProps} from "./Button.props";
 
 export const StyledButton = styled.button<ButtonProps>`
   width: max-content;

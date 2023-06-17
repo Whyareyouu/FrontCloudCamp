@@ -1,6 +1,6 @@
 import React, {ForwardedRef, forwardRef} from 'react';
 import {InputContainer, StyledClearIcon, StyledInput, Tip} from "./Input.styles";
-import {InputProps} from "./Input.interface";
+import {InputProps} from "./Input.props";
 import {ErrorMessage} from "../index";
 
 

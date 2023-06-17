@@ -1,5 +1,5 @@
 import React, {ForwardedRef, forwardRef} from 'react';
-import {CheckboxProps} from "./Checkbox.interface";
+import {CheckboxProps} from "./Checkbox.props";
 import {Label} from "../index";
 import {StyledCheckBox} from "./Checkbox.styles";
 

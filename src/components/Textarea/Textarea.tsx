@@ -1,6 +1,6 @@
 import React, {ForwardedRef, forwardRef} from 'react';
 import {CountOfLetters, MessagesContainer, StyledTextarea, Tip} from "./Textarea.styles";
-import {TextareaProps} from "./Textarea.interface";
+import {TextareaProps} from "./Textarea.props";
 import {ErrorMessage} from "../index";
 
 const Textarea = forwardRef(({
