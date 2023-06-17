@@ -5,5 +5,5 @@ const emailRegExp = /\S*@[a-zA-Z]*\.[a-zA-Z]/g
 
 export const validationSchema = Yup.object().shape({
     phone: Yup.string().matches(phoneRegExp, 'Некорректный номер телефона').required('Введите номер телефона'),
-    email: Yup.string().matches(emailRegExp, 'Неккоретно введена почта').required("Введите адрес электронной почты")
+    email: Yup.string().email('Неккоретно введена почта').matches(emailRegExp, 'Неккоретно введена почта').required("Введите адрес электронной почты")
 })
